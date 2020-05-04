@@ -1,0 +1,87 @@
+<div>
+    <app-navbar></app-navbar>
+    <div class="row">
+        <div class="search col-lg-12 col-md-12">
+            <form [formGroup]="searchForm" class="row" (ngSubmit)="searchFlights()">
+                <div class="offset-lg-1 offset-md-1 col-lg-2 col-md-2">
+                    <div class="form-group text-light">
+                        <label for="source">Source : </label>
+                        <!-- <input type="text" formControlName="source" placeholder="Source"/> -->
+                        <select class="custom-select" (change)="changeSource($event)" formControlName="source">
+                            <option value="">Choose Source</option>
+                            <option *ngFor="let city of City" [value]="city">{{city}}</option>
+                          </select>
+                        <div *ngIf="submitted && searchForm.controls.source.errors" class="text-danger">
+                            <div *ngIf="searchForm.controls.source.errors.required">
+                                Source required....
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="offset-lg-1 offset-md-1 col-lg-2 col-md-2">
+                    <div class="form-group text-light">
+                        <label for="destination">Destination : </label>
+                        <!-- <input type="text" formControlName="destination" placeholder="Destination"/> -->
+                        <select class="custom-select" (change)="changeDestination($event)" formControlName="destination">
+                            <option value="">Choose Destination</option>
+                            <option *ngFor="let city of City" [value]="city">{{city}}</option>
+                          </select>
+                        <div *ngIf="submitted && searchForm.controls.destination.errors" class="text-danger">
+                             <div *ngIf="searchForm.controls.destination.errors.required">
+                                 Destination required....
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="offset-lg-1 offset-md-1 col-lg-2 col-md-2">
+                    <div class="form-group text-light">
+                        <label for="journeyDate">Journey Date : </label>
+                        <input type="date" formControlName="journeyDate" placeholder="Journey Date"/>
+                        <div *ngIf="submitted && searchForm.controls.journeyDate.errors" class="text-danger">
+                            <div *ngIf="searchForm.controls.journeyDate.errors.required">
+                                Journey Date Required....
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="offset-lg-1 offset-md-1 col-lg-2 col-md-2" style="margin-top: 10px;">
+                <button class="btn btn-warning btn-lg">Search</button>
+                </div>
+           </form>
+        </div>
+        
+    </div>
+    
+        <div class="offset-lg-1 offset-md-1 col-lg-10 col-md-10">
+            <div *ngFor="let flight of flights">
+                <div class="showFlights row">
+                <div clas="col-lg-2 col-md-2">
+                    <img src="/assets/images/{{flight.flightCompany}}.png" width="200px" height="200px"/>
+                </div>
+                <div class="col-lg-7 col-md-7 row">
+                    <span class="text-success offset-lg-1 offset-md-1 col-lg-3 col-md-3 text-center data">{{flight.source|titlecase}}</span>
+                    <span class="text-warning coL-LG-5 col-md-5 text-center data">to</span>
+                    <span class="text-success col-lg-3 col-md-3 text-center data">{{flight.destination|titlecase}}</span><br>
+                    <span class="offset-lg-1 offset-md-1 col-lg-11 col-md-11"><hr></span>
+                    <span class="offset-lg-1 offset-md-1 details">Flight Number : {{flight.flightNumber}}</span><br>
+                    <span class="offset-lg-2 offset-md-2 details">Date : {{flight.journeyDate}}</span>
+                    <span class="offset-lg-1 offset-md-1 details">Available seats: {{flight.availableSeats}}</span>
+                    <span *ngIf="flight.availableSeats<=5" class="text-danger font-weight-bold">Only {{flight.availableSeats}} Seats</span>
+                </div>
+                <div class=" offset-lg-1 offset-md-1 col-lg-2 col-md-2 thirdpart">
+                    <span class="data text-warning pt-3">{{flight.cost| currency:'INR'}}</span><br>
+                    <button class="btn btn-success btn-lg mt-5 offset-lg-3 offset-md-3"  (click)="bookFlight(flight)">Book</button>
+                </div>
+                </div>
+            </div>
+            <div *ngIf="noFlightFound">
+                <div class="offset-lg-4 offset-md-4 noflights">
+                    <img src="/assets/images/noflight.png" style="padding-left: 80px;"/><br>
+                    <span class="text-center data">{{errorNoFlightFound}}</span><br>
+                    <p>Please try another date or modify search</p>
+                </div>
+            </div>
+        </div>
+ 
+</div>                                                                                                                                                                                                                           

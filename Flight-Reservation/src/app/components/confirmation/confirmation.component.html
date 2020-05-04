@@ -1,0 +1,123 @@
+<div style="padding-bottom: 10%;">
+    <app-navbar></app-navbar>
+    <div class="offset-lg-1 offset-md-1 col-lg-8 col-md-8">
+        <div *ngIf="isNotEnoughAvailableSeats">
+            <span class="notEnoughSeats">---This flight has only {{flight.availableSeats}} available seats---</span>
+        </div>
+        <div class="row">
+        <div class="num font-bold">
+           01
+        </div>
+        <h3 class="til font-bold">TICKET DETAILS</h3>
+    </div>
+    <div class="finfo">
+        <h3 class="title">
+        <span class="font-Roman">Going: {{flight.source|titlecase}} to {{flight.destination|titlecase}} {{flight.journeyDate}}</span>
+        <span class="pull-right" style="font-size:14px;color:#017959;font-weight:normal;">Non refundable</span>
+    </h3>
+
+    </div>
+    <div class="finfo1 card">
+        <div class="card-header">
+            <span>{{flight.flightCompany|titlecase}} {{flight.flightNumber}}</span>
+            <span class="pull-right">15 kgs Check-In baggage,7 kgs hand baggage</span>
+        </div>
+        <div class="row fline">
+            <div class="start col-lg-3 col-md-3">
+                <strong style="font-size: 36px;color: #111;">{{flight.source|titlecase}}</strong>
+            </div>
+            <div class="mid col-lg-3 col-md-3">
+                <span>to</span>
+            </div>
+            <div class="start col-lg-3 col-md-3 pull right">
+                <strong style="font-size: 36px;color: #111;">{{flight.destination|titlecase}}</strong>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="num font-bold">
+           02
+        </div>
+        <h3 class="til font-bold">PASSENGER DETAILS</h3>
+    </div>
+    <div>
+        <table class="table">
+            <tr>
+                <th>Passenger Name</th>
+                <th>Passenger Age</th>
+                <th>Passenger Gender</th>
+                <th>Remove Passenger</th>
+            </tr>
+            <tr *ngFor="let passenger of passengers;let i=index">
+                <td>{{passenger.passengerName}}</td>
+                <td>{{passenger.passengerAge}}</td>
+                <td>{{passenger.passengerGender}}</td>
+                <td><button class="btn btn-danger" (click)="removePassenger(i)">Remove</button></td>
+            </tr>
+            <tr>
+                <td  *ngIf="passengers.length==0" colspan="4">
+                    <h5 class="text-center text-danger">
+                        You havn't added any passenger</h5>
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <form [formGroup]="passengerDetailForm" class="offset-lg-1 offset-md-1" (ngSubmit)="addPassenger()">
+            <div class="form-group row">
+                <label for="passengerName" class="col-lg-3 col-md-3">Passenger Name<span class="text-danger">*</span> : </label>
+                <input type="text" formControlName="passengerName" placeholder="Passenger Name"/>
+                <div *ngIf="(submitted || passengerDetailForm.controls.passengerName.touched) && passengerDetailForm.controls.passengerName.errors" class="text-danger offset-lg-1 offset-md-1">
+                    <div *ngIf="passengerDetailForm.controls.passengerName.errors.required">
+                        Passenger name required....
+                    </div>
+                    <div *ngIf="passengerDetailForm.controls.passengerName.errors.pattern">
+                        Only Alphabet Appliacable...
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="passengerAge" class="col-lg-3 col-md-3">Age<span class="text-danger">*</span> : </label>
+                <input type="number" formControlName="passengerAge" placeholder="Passenger Age"/>
+                <div *ngIf="(submitted || passengerDetailForm.controls.passengerAge.touched) && passengerDetailForm.controls.passengerAge.errors" class="text-danger offset-lg-1 offset-md-1">
+                    <div *ngIf="passengerDetailForm.controls.passengerAge.errors.required">
+                        Passenger age required....
+                    </div>
+                <div *ngIf="passengerDetailForm.controls.passengerAge.errors.max">
+                    Invalid Age...
+                </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="passengerGender" class="col-lg-3 col-md-3">Gender<span class="text-danger">*</span> :</label>
+                <input type="radio" style="margin-top: 5px" formControlName="passengerGender" value="Male"/><span class="col-lg-2 col-md-2">Male</span>
+                <input type="radio" style="margin-top: 5px" formControlName="passengerGender" value="Female"/><span class="col-lg-2 col-md-2">Female</span>
+                <div *ngIf="(submitted || passengerDetailForm.controls.passengerGender.touched) && passengerDetailForm.controls.passengerGender.errors" class="text-danger offset-lg-1 offset-md-1">
+                        <div *ngIf="passengerDetailForm.controls.passengerGender.errors.required">
+                            Gender required...
+                        </div>
+                    </div>
+            </div>
+            <button class="btn btn-success offset-lg-1 offset-md-1" [disabled]="notEnoughSeats" style="background-color: #017959;">AddPassenger</button>
+            <span *ngIf="notEnoughSeats" class="text-danger">Now you cann't add passenger</span>
+        </form>
+    </div><br><br>
+    <div class="row">
+        <div class="num font-bold">
+           03
+        </div>
+        <h3 class="til font-bold">PRICE CALCULATION</h3>
+    </div>
+    <div class="col-lg-10 col-md-10">
+        <div *ngIf="passengers.length==0">
+            <span class="text-danger text-center font-weight-bold">You havn't added any passenger</span>
+        </div>
+        
+        <div *ngIf="passengers.length!=0">
+        <span class="text-center totalPrice">Total Price is : </span>
+        <span>{{totalCost}}</span>
+        
+    </div><br>
+    <button class="btn btn-success offset-lg-1 offset-md-1 col-lg-6 col-md-6" style="background-color: #017959;" [disabled]="noPassengerAdded" (click)="bookTicket()">Book Ticket</button>
+    </div>
+    </div>
+</div>

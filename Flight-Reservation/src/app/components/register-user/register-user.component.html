@@ -1,0 +1,94 @@
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light font-weight-bold">
+        <a class="navbar-brand icon">HAPPYEASY<span class="text-warning">Fly</span></a>
+        </nav>
+<div class="register row">
+    
+        <div class="card offset-lg-3 offset-md-3 col-lg-6 col-md-6"> 
+            <div class="card-header text-center font-weight-bold" style="color: #017959;">
+                Register
+            </div>
+        <form [formGroup]="registerForm" class="offset-lg-1 offset-md-1" (ngSubmit)="registerUser()">
+            <br>
+            <div class="form-group row">
+                <label for="userId" class="col-lg-4 col-md-4 font-weight-bold">User Id<span class="text-danger">*</span> : </label>
+                <input type="text" class="col-lg-7 col-md-7" formControlName="userId"  placeholder="Create user id"/>
+                <div *ngIf="(submitted || registerForm.controls.userId.touched) && registerForm.controls.userId.errors" class="text-danger offset-lg-4 offset-md-4">
+                    <div *ngIf="registerForm.controls.userId.errors.required">
+                        User Id required...
+                    </div>
+                </div>
+                <div *ngIf="isUserIdExist" class="text-danger offset-lg-4 offset-md-4">
+                   {{userAlreadyExist}}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="firstName" class="col-lg-4 col-md-4 font-weight-bold">First Name<span class="text-danger">*</span> :</label>
+                <input type="text" class="col-lg-7 col-md-7" formControlName="firstName" placeholder="First Name"/>
+                <div *ngIf="(submitted || registerForm.controls.firstName.touched) && registerForm.controls.firstName.errors" class="text-danger offset-lg-4 offset-md-4">
+                    <div *ngIf="registerForm.controls.firstName.errors.required">
+                        First Name required...
+                    </div>
+                    <div *ngIf="registerForm.controls.firstName.errors.pattern">
+                        Only Alphabets applicable...
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="lastName" class="col-lg-4 col-md-4 font-weight-bold">Last Name<span class="text-danger">*</span> :</label>
+                <input type="text" class="col-lg-7 col-md-7" formControlName="lastName" placeholder="Last Name"/>
+                <div *ngIf="(submitted || registerForm.controls.lastName.touched) && registerForm.controls.lastName.errors" class="text-danger offset-lg-4 offset-md-4">
+                        <div *ngIf="registerForm.controls.lastName.errors.required">
+                            Last Name required...
+                        </div>
+                        <div *ngIf="registerForm.controls.lastName.errors.pattern">
+                            Only Alphabets applicable...
+                        </div>
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="mobileNumber" class="col-lg-4 col-md-4 font-weight-bold">Mobile Number<span class="text-danger">*</span> :</label>
+                <input type="number" class="col-lg-7 col-md-7" formControlName="mobileNumber" placeholder="Mobile Number"/>
+                <div *ngIf="(submitted || registerForm.controls.mobileNumber.touched) && registerForm.controls.mobileNumber.errors" class="text-danger offset-lg-4 offset-md-4">
+                        <div *ngIf="registerForm.controls.mobileNumber.errors.required">
+                            Mobile Number required...
+                        </div>
+                        <div *ngIf="registerForm.controls.mobileNumber.errors.pattern">
+                            Invalid Mobile Number...
+                        </div>
+                    </div>
+            </div>
+            <div class="form-group row">
+                <label for="gender" class="col-lg-4 col-md-4 font-weight-bold">Gender<span class="text-danger">*</span> :</label>
+                <input type="radio" style="margin-top: 5px" formControlName="gender" value="Male"/><span class="col-lg-2 col-md-2">Male</span>
+                <input type="radio" style="margin-top: 5px" formControlName="gender" value="Female"/><span class="col-lg-2 col-md-2">Female</span>
+                <div *ngIf="(submitted || registerForm.controls.gender.touched) && registerForm.controls.gender.errors" class="text-danger offset-lg-4 offset-md-4">
+                        <div *ngIf="registerForm.controls.gender.errors.required">
+                            Gender required...
+                        </div>
+                    </div>
+            </div>
+            <div class="form-group row">
+                    <label for="password" class="col-lg-4 col-md-4 font-weight-bold">Password<span class="text-danger">*</span> :</label>
+                    <input type="password" class="col-lg-7 col-md-7" formControlName="password" placeholder="Create Password"/>
+                    <div *ngIf="(submitted || registerForm.controls.password.touched) && registerForm.controls.password.errors" class="text-danger offset-lg-4 offset-md-4">
+                        <div *ngIf="registerForm.controls.password.errors.required">
+                            Password required...
+                        </div>
+                    </div>
+                </div>
+                
+                    <div class="form-group row">
+                        <button class="btn-info offset-lg-1 offset-md-1 col-lg-4 col-md-4 font-weight-bold" style="background-color: #017959;">Register</button>
+                        <button type="reset" class="btn-info offset-lg-1 offset-md-1 col-lg-4 col-md-4 font-weight-bold" (click)="resetUser()" style="background-color: #017959;">Reset</button>
+                        
+                    </div>
+                   <span>Already have an account</span>
+                   <a routerLink="/login">click here</a>
+        </form>
+        
+        </div>
+        
+    
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light font-weight-bold">
+        <a class="navbar-brand icon">HAPPYEASY<span class="text-warning">Fly</span></a>
+        </nav>
+    
+<div class="row login">
+    
+    <div class="card offset-lg-3 offset-md-3 col-lg-5 col-md-5"> 
+        <div class="card-header text-center font-weight-bold" style="color: #017959;">
+            Login
+        </div>
+            <form [formGroup]="loginForm" class="offset-lg-1 offset-md-1" (ngSubmit)="loginUser()">
+                <br>
+                <div class="form-group row">
+                    <label for="userId" class="col-lg-4 col-md-4 font-weight-bold">User Id<span class="text-danger">*</span> : </label>
+                    <input type="text" class="col-lg-7 col-md-7"placeholder="userId" formControlName="userId"/>
+                    <div *ngIf="submitted && loginForm.controls.userId.errors" class="text-danger offset-lg-4 offset-md-4">
+                        <div *ngIf="loginForm.controls.userId.errors.required">
+                            User Id Required....
+                        </div>
+                    </div>
+                    <div *ngIf="isUserIdExist" class="text-danger offset-lg-4 offset-md-4">
+                       {{userIdNotExist}}
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                        <label for="password" class="col-lg-4 col-md-4 font-weight-bold">Password<span class="text-danger">*</span> : </label>
+                        <input type="password" class="col-lg-7 col-md-7" placeholder="Password" formControlName="password"/>
+                        <div *ngIf="submitted && loginForm.controls.password.errors" class="text-danger offset-lg-4 offset-md-4">
+                            <div *ngIf="loginForm.controls.password.errors.required" >
+                                Password Required....
+                            </div>
+                        </div>
+                        <div *ngIf="isPasswordValid" class="text-danger offset-lg-4 offset-md-4">
+                            {{invalidPasswordMessage}}
+                        </div>
+                </div><br>
+                <button class="btn btn-block btn-lg text-light font-weight-bolder" style="background-color: #017959;">Login</button><br>
+                <span>Don't have an account</span>
+                <a routerLink="/register">click here</a>
+            </form>
+    </div>
+
+</div>
+</div>

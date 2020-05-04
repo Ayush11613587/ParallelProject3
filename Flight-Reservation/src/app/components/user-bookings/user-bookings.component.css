@@ -1,0 +1,42 @@
+.til{
+    float: left;
+    color: #383838;
+    margin-top: 5px;
+    font-weight: 700;
+    font-size: 30px;
+}
+.listOfTickets{
+    padding-bottom: 5%;
+}
+.fline{
+    padding: 30px 0;
+    border: 1px solid #dcdcdc;
+    border: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    position: relative;
+}
+.card-header{
+    background-color: #017959;
+    color: white;
+}
+.start{
+    text-align: center;
+    margin-left: 73px;
+}
+.mid{
+    margin-top: 2px;
+    font-size: 25px;color: #111;text-align:center;
+}
+hr {
+    border: 2px solid #017959 ;
+}
+.data{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:30px;
+    font-weight: bolder;
+}
+.noTickets{
+    margin-top: 10%;
+    margin-bottom: 15%;
+}

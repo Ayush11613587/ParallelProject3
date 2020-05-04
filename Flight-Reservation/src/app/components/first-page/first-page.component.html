@@ -1,0 +1,170 @@
+<div>
+    <app-navbar></app-navbar>
+    <div class="row back">
+<div class="card offset-lg-1 offset-md-1 col-lg-4 col-md-4 bg-light searchform">
+    <div class="card-header text-center">
+        Search Your Flight
+    </div>
+    <br><br>
+<form [formGroup]="searchForm" (ngSubmit)="searchFlights()">
+    <div class="form-group row">
+        <label for="source" class="col-lg-4 col-md-4">Source : </label>
+        <!-- <input type="text" class="col-lg-7 col-md-7" formControlName="source" placeholder="Source"/> -->
+        <select class="custom-select" class="col-lg-7 col-md-7" (change)="changeSource($event)" formControlName="source">
+            <option value="">Choose Source</option>
+            <option *ngFor="let city of City" [value]="city">{{city}}</option>
+          </select>
+        <div *ngIf="submitted && searchForm.controls.source.errors" class="text-danger offset-lg-4 offset-md-4">
+            <div *ngIf="searchForm.controls.source.errors.required">
+                Source required....
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+    <button class="btn swap offest-lg-10 offset-md-10" (click)="swap()"><i class="fa fa-exchange fa-rotate-90" ></i></button>
+</div>
+    <div class="form-group row">
+        <label for="destination" class="col-lg-4 col-md-4">Destination : </label>
+        <!-- <input type="text" class="col-lg-7 col-md-7" formControlName="destination" placeholder="Destination"/> -->
+        <select class="custom-select" class="col-lg-7 col-md-7" (change)="changeDestination($event)" formControlName="destination">
+            <option value="">Choose Destination</option>
+            <option *ngFor="let city of City" [value]="city">{{city}}</option>
+          </select>
+        <div *ngIf="submitted && searchForm.controls.destination.errors" class="text-danger offset-lg-4 offset-md-4">
+            <div *ngIf="searchForm.controls.destination.errors.required">
+                Destination required....
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="jouneyDate" class="col-lg-4 col-md-4">Date : </label>
+        <input type="date" class="col-lg-7 col-md-7" formControlName="journeyDate" placeholder="dd/mm/yyyy">
+        <div *ngIf="submitted && searchForm.controls.journeyDate.errors" class="text-danger offset-lg-4 offset-md-4">
+            <div *ngIf="searchForm.controls.journeyDate.errors.required">
+                Journey Date required....
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-warning btn-lg pull-right">Search HappyEasyFly</button>
+
+</form>
+</div>
+<div class="col-lg-7 col-md-7">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height: 500px;">
+        
+        <div class="carousel-inner">
+            <br><br><br><br>
+            <div class="carousel-item offset-lg-2 offset-md-2 col-lg-8 col-md-8 active">
+
+                <span class="text-center text-light heading">The Sky is waiting for You!</span>
+                <br><br><br>
+                <span class="text-light">With XYZ Air,You can easily book any ticket you need to travel safely 
+                    thanks to our detailed system of searching and booking airline tickets.</span>    
+            </div>
+            <div class="carousel-item offset-lg-2 offset-md-2 col-lg-8 col-md-8">
+                
+                <span class="text-center text-light heading">Explore the world with XYZ Air</span>
+                <br><br><br>
+                <span class="text-light">With XYZ Air, you find a personalized tours in just few clicks, you will find a perfect destination among hundreds
+                     available and also it provides a number of offers.
+                </span>
+            </div>
+            <div class="carousel-item offset-lg-2 offset-md-2 col-lg-8 col-md-8">
+                <span class="text-center text-light heading">Student Discount</span>
+                <br><br><br>
+                <span class="text-light">XYZ Air provides 6% discount on base fare and 10 kg extra baggage
+                    allowance.
+                </span>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+    </div>
+    <br>
+    <div class="offset-lg-3 offset-md-3">
+        <span class="heading" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Time for India to Fly the dream</span>
+    </div>
+    <br>
+    <div class="row">
+        <div class="offset lg-1 offset-md-1 col-lg-10 col-md-10">
+            <div id="carouselExampleIndicator" class="carousel slide" data-ride="carousel">
+        
+                <div class="carousel-inner">
+                    
+                    <div class="carousel-item active">
+                        <div class="row">
+                        <div class="offset-lg-2 offset-md-2 col-lg-2 col-md-2">
+                            <img src="/assets/images/indigo.png" height="140px" width="100%">
+                        </div>
+                        <div class="col-lg-1 col-md-1"></div>
+                        <div class="offset-lg-1 offset-md-1 col-lg-4 col-md-4" style="border-left: 1px solid black;">
+                                <span>IndiGo is not only the most efficient low fare operator domestically but is also 
+                                    comparable with global low cost airlines. We are constantly enhancing our engagement 
+                                    with our passengers to augment their travel experience.</span>
+                        </div>
+                    </div>
+                            
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="offset-lg-2 offset-md-2 col-lg-2 col-md-2">
+                                <img src="/assets/images/vistara.png" height="140px" width="100%">
+                            </div>
+                            <div class="col-lg-1 col-md-1"></div>
+                            <div class="col-lg-4 col-md-4" style="border-left: 1px solid black;">
+                                    <span>Vistara is a joint venture of Tata Sons Private Limited and Singapore 
+                                        Airlines Limited (SIA).The common goal is to redefine 
+                                        air travel in India to provide Indian travellers a seamless and personalized 
+                                        flying experience.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="offset-lg-2 offset-md-2 col-lg-2 col-md-2">
+                                <img src="/assets/images/spicejet.png" height="140px" width="100%">
+                            </div>
+                            <div class="col-lg-1 col-md-1"></div>
+                            <div class="offset-lg-1 offset-md-1 col-lg-4 col-md-4" style="border-left: 1px solid black;">
+                                    <span>SpiceJet’s mission is to become India’s preferred low-cost airline, delivering the lowest 
+                                        air fares with the highest customer value, to price sensitive customers.We hope to 
+                                        fulfill everyone’s dream of flying!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="offset-lg-2 offset-md-2 col-lg-2 col-md-2">
+                                <img src="/assets/images/air asia.png" height="140px" width="100%">
+                            </div>
+                            <div class="col-lg-1 col-md-1"></div>
+                            <div class="offset-lg-1 offset-md-1 col-lg-4 col-md-4" style="border-left: 1px solid black;">
+                                    <span>AirAsia is the largest airline in Malaysia by fleet size and destinations.
+                                          AirAsia Group operates scheduled domestic and international flights to more 
+                                          than 165 destinations spanning 25 countries</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicator" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicator" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+<br><br>
+
+</div>

@@ -1,0 +1,49 @@
+.back{
+    background:linear-gradient(to bottom,#f3f7f6 0%,#5dd3b3 100%);
+}
+.search{
+background-color: #017959 ;
+background-size: 200px 200px;
+height: 100px;
+padding-top: 10px;
+}
+.showFlights{
+    margin-top:20px;
+    border:2px solid gray;
+    margin-bottom: 10px;
+    background-color: ivory;
+}
+.showFlights:hover{
+    border-color: #017959 ;
+    -ms-transform: scale(1.01);
+    -webkit-transform: scale(1.01);
+    transform: scale(1.01); 
+}
+input{
+    /*color: white;
+    background: transparent;
+    border:none;
+    border-bottom:1px solid white;
+    font-weight: bold;*/
+    width:100%;
+    height: 40px;
+}
+hr {
+    border: 2px solid #017959 ;
+  }
+.data{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:30px;
+    font-weight: bolder;
+  }
+.details{
+    font-size: x-large;
+    text-decoration: black;
+}
+.thirdpart{
+    border-left: 1px solid;
+}
+.noflights{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}

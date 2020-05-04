@@ -1,0 +1,22 @@
+.login{
+    padding-top: 10%;
+    padding-left:10%;
+    padding-bottom: 10%;
+    background: linear-gradient(to bottom,#f3f7f6 0%,#5dd3b3 100%);
+}
+.icon{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:#017959;
+}
+.card-header{
+    font-size: 30px;
+}
+input{
+    border-color: #017959;
+}
+.statement{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size:30px;
+    font-weight: bolder;
+    padding-left: 40%;
+}

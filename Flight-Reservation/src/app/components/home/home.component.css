@@ -1,0 +1,29 @@
+.airline{
+    font-size: 50px;
+    color: #017959;
+}
+.brdr{
+    border-bottom: 1px solid #017959;
+
+}
+.whyxyz{
+    background-image: url("/assets/images/ab.jpg");
+    background-size: cover;
+}
+.heading{
+    font-size: 50px;
+    color:white;
+}
+.contact{
+    background-image: url("/assets/images/contact.jpg");
+    background-size: cover;
+    height:80vh;
+}
+.telephone{
+    color:#017959;
+    font-size:50px;
+    font-weight: bolder;
+}
+.box{
+    box-shadow: 10px 10px 5px #017959;
+}
